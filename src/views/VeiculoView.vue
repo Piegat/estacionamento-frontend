@@ -1,6 +1,7 @@
 <template>
+  <div class="veiculo">
     <Estacionamento/>
-
+  </div>
 </template>
 
 
@@ -13,12 +14,11 @@ h1{
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
-import Inicio from '@/components/Inicio.vue';
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'VeiculoView',
   components: {
     Estacionamento,
-},
+  },
 });
 </script>
