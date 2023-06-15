@@ -7,7 +7,7 @@ export class CodutorClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8080/api/configuracao',
+            baseURL: 'http://localhost:3000/api/configuracao',
             headers: { 'Content-type': 'application/json' }
         })
     }
