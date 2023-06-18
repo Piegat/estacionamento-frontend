@@ -1,26 +1,27 @@
  <template>
 
-    <div class="navbar fixed-top d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      </a>
-      <hr>
-      <hr>
-      <ul class="nav d-flex align-items-start nav-pills flex-column mb-auto">
-        <li class="nav-item d-flex align-items-center justify-content-center">
-            <i class="bi bi-house-fill"></i> <router-link class="nav-link text-white" to="/">Inicio</router-link>
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="/menuveiculo" class="nav-link" aria-current="page">Veiculos</a>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-center">
-          <i class="bi bi-people-fill"></i><router-link class="nav-link text-white" to="/">Veiculos</router-link>
+        <li class="nav-item">
+          <a href="/condutor" class="nav-link">Condutores</a>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-center">
-          <i class="bi bi-bookmark-fill"></i><router-link class="nav-link text-white" to="/">Condutores</router-link>
+        <li class="nav-item">
+          <a href="/" class="nav-link">Inicio</a></li>
+        <li class="nav-item">
+          <a href="/movimentacoes" class="nav-link">Movimentações</a>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-center">
-          <i class="bi bi-archive-fill"></i><router-link class="nav-link  text-white" to="/">Movimentações</router-link>
+        <li class="nav-item">
+          <a href="/configuracoes" class="nav-link">Configurações</a>
         </li>
       </ul>
-      <hr>
-    </div>
+    </header>
+  </div>
+  </div>
   </template>
   
   <script lang="ts">

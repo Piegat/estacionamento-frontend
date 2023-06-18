@@ -4,8 +4,8 @@ import HomeView from '../views/HomeView.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'inicioView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Inicio.vue')
   },
   {
     path: '/veiculo',
@@ -13,22 +13,44 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VeiculoView.vue')
-  },  {
+    component: () => import(/* webpackChunkName: "about" */ '../views/Veiculo/VeiculoView.vue')
+  },
+  
+  {
+  path: '/menuveiculo',
+  name: 'MenuVeiculo',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import(/* webpackChunkName: "about" */ '../views/VeiculosMenu.vue')
+},
+  
+  {
     path: '/configuracoes',
     name: 'Configuracoes',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ConfiguracoesView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Configuracoes/ConfiguracoesView.vue')
   },
+
+  {
+    path: '/movimentacoes',
+    name: 'MovimentacaoVue',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Movimentacoes/Movimentacao.vue')
+  },
+
+
   {
     path: '/condutor',
     name: 'Condutor',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/CondutorView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Condutor/CondutorView.vue')
   },
   {
     path: '/condutor/editar',
@@ -36,7 +58,7 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Editar/CondutorEditarView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Condutor/CondutorEditarView.vue')
   }
 
 ]
