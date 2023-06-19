@@ -1,6 +1,7 @@
 <template>
-  <div class="veiculo">
-    <Estacionamento/>
+    <div class="configuracoes">
+      <Estacionamento/>
+        
     <div class="main-content d-flex flex-column align-items-start">
         <div class="page-header d-flex justify-content-between align-items-center">
         <LinkDinamicoComponent routeList="/marca" routeRegister="/marca/cadastrar" default-active="register" />
@@ -9,20 +10,16 @@
 
 
 <div class="table-display mt-4 w-100">
-  <table class="table-secondary table-sm w-100 table-bordered border-dark" >
+        <table class="table-secondary table-sm w-100 table-bordered border-dark" >
          <thead class="text-white">
-           <tr>
+           <tr >
              <th scope="col">Id</th>
-             <th scope="col">Condutor</th>
-             <th scope="col">Modelo</th>
               <th scope="col">Marca</th>
               <th scope="col">Ação</th>
             </tr>
           </thead>
           <tbody class="text-white">
           <tr>
-            <td>a</td>
-            <td>a</td>
             <td>a</td>
             <td>a</td>
 
@@ -37,12 +34,14 @@
           </tr>
         </tbody>
 
-
         </table>
     </div>
-  </div>
-</template>
 
+</div>
+
+
+
+  </template>
 
 <style>
 
@@ -84,16 +83,17 @@ td {
 }
 </style>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
-import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
 
-export default defineComponent({
-  name: 'VeiculoView',
-  components: {
-    Estacionamento,
-    LinkDinamicoComponent
-  },
-});
-</script>
+  <script lang="ts">
+  import { defineComponent } from 'vue';
+  import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
+  import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
+
+  export default defineComponent({
+    name: 'MarcaView',
+    components: {
+      Estacionamento,
+      LinkDinamicoComponent
+    },
+  });
+  </script>
