@@ -45,7 +45,11 @@ h1{
     color: #b1b1b1;
 }
 
+.row{
 
+    margin: 0px;
+    margin-top: 15rem;
+}
 
 
 </style>

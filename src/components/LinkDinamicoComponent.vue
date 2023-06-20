@@ -1,6 +1,7 @@
 <template>
     <div class="link-path d-flex align-items-center mt-2">
-        <button class="button-usersList bg-primary">
+        <button class="button-usersList bg-primary" :class="{ active: activeButton === 'register' }"
+            @click="navigateTo(routeRegister)">
             Cadastrar Novo
         </button>
     </div>

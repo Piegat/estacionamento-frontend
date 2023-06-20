@@ -1,5 +1,5 @@
 <template>
-    <div class="configuracoes">
+    <div class="marca">
       <Estacionamento/>
         
     <div class="main-content d-flex flex-column align-items-start">
@@ -15,7 +15,7 @@
            <tr >
              <th scope="col">Id</th>
               <th scope="col">Marca</th>
-              <th scope="col">Ação</th>
+              <th scope="col" style="width:250px">Ação</th>
             </tr>
           </thead>
           <tbody class="text-white">
@@ -24,9 +24,14 @@
             <td>a</td>
 
             <td>
-              <div class="d-flex justify-content-center actions">
+                <div class="d-flex justify-content-center actions">
                 <button class="btn btn-sm btn-primary me-1">
                   <i class="bi bi-pencil-square"></i> Editar </button>
+
+                  <button class="btn btn-sm btn-success me-1">
+                  <i class="bi bi-pencil-square"></i> Detalhar </button>
+
+
                 <button class="btn btn-sm btn-danger" >
                   <i class="bi bi-trash"></i> Excluir </button>
               </div>
