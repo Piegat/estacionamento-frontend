@@ -1,6 +1,6 @@
 <template>
-    <div class="condutor">
-      <Estacionamento/>
+<Estacionamento/>
+<div class="condutor">
         
     <div class="main-content d-flex flex-column align-items-start">
         <div class="page-header d-flex justify-content-between align-items-center">
@@ -10,7 +10,7 @@
 
 
 <div class="table-display mt-4 w-100">
-        <table class="table-secondary table-sm w-100 table-bordered border-dark" >
+        <table class="table table-primary table-striped  table-sm w-100 table-bordered border-light">
          <thead class="text-white">
            <tr >
              <th scope="col">Id</th>
@@ -24,7 +24,7 @@
 
             </tr>
           </thead>
-          <tbody class="text-white">
+          <tbody class="">
           <tr>
             <td>a</td>
             <td>a</td>

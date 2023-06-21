@@ -5,28 +5,28 @@
       <form>
   <!-- Name input -->
 
-    <label for="categoria-id" class="text-primary">Nome Completo</label>
+    <label for="categoria-id" class=" d-flex">Nome Completo</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example1" class="wid form-control bg-secondary" placeholder="Nome Completo" />
+    <input type="text" id="form4Example1" class="wid form-control " placeholder="Nome Completo" />
   </div>
 
-  <label for="categoria-id" class="text-primary">CPF</label>
+  <label for="categoria-id" class=" d-flex ">CPF</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example2" class=" wid form-control bg-secondary" placeholder="CPF" />
+    <input type="text" id="form4Example2" class=" wid form-control " placeholder="CPF" />
   </div>
 
 
   <!-- Email input -->
-  <label for="categoria-id" class="text-primary">E-Mail</label>
+  <label for="categoria-id" class=" d-flex">E-Mail</label>
 
   <div class="form-outline mb-4">
-    <input type="email" id="form4Example2" class="wid form-control bg-secondary" placeholder="E-Mail" />
+    <input type="email" id="form4Example2" class="wid form-control " placeholder="E-Mail" />
   </div>
 
-  <label for="categoria-id" class="text-primary">Telefone</label>
+  <label for="categoria-id" class=" d-flex">Telefone</label>
 
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example2" class="wid form-control bg-secondary" placeholder="Telefone" />
+    <input type="text" id="form4Example2" class="wid form-control " placeholder="Telefone" />
   </div>
 
 
@@ -45,6 +45,15 @@
 
 
 <style>
+
+
+label{
+
+  margin-left: 35vw;
+  color: white;
+
+}
+
 h1{
     color: #b1b1b1;
 }
@@ -60,16 +69,20 @@ h1{
 .wid{
 
     margin: auto;
-    width: 50%;
+    width: 30%;
     border: none;
+    background-color: #cfe2ff;
 
 }
 
 form{
 
     margin-top: 50px;
+    padding: 10px;
+    
 
 }
+
 </style>
 
   <script lang="ts">

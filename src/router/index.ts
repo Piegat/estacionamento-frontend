@@ -42,6 +42,23 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Movimentacoes/Movimentacao.vue')
   },
+{
+    path: '/movimentacoes/cadastrar',
+    name: 'MovimentacaoNewVue',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Movimentacoes/MovimentacaoNew.vue')
+  },
+
+  {
+    path: '/movimentacoes/editar',
+    name: 'MovimentacaoEditVue',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Movimentacoes/MovimentacaoEdit.vue')
+  },
 
 
   {
@@ -51,6 +68,9 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Condutor/CondutorView.vue')
+    
+    
+  
   },
   {
     path: '/condutor/editar',
@@ -76,6 +96,17 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Marca/Marca.vue')
   },
+
+  {
+    path: '/marca/cadastrar',
+    name: 'MarcaCadastrarView',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Marca/MarcaCadastrar.vue')
+  },
+
+
   {
     path: '/modelo',
     name: 'ModeloView',
@@ -83,7 +114,17 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Modelo/Modelo.vue')
+  },
+
+  {
+    path: '/modelo/cadastrar',
+    name: 'ModeloCadastrarView',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Modelo/ModeloCadastrar.vue')
   }
+
 
 
 

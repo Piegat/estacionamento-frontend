@@ -10,9 +10,10 @@
 
 
 <div class="table-display mt-4 w-100">
-        <table class="table-secondary table-sm w-100 table-bordered border-dark" >
+
+  <table class="table table-primary table-striped  table-sm w-100 table-bordered border-light">
          <thead class="text-white">
-           <tr >
+                     <tr >
              <th scope="col">Id</th>
               <th scope="col">Marca</th>
               <th scope="col" style="width:250px">Ação</th>

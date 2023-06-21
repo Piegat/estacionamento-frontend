@@ -3,12 +3,13 @@
       <Estacionamento/>
         
     <div class="main-content d-flex flex-column align-items-start">
-        <LinkDinamicoComponent routeList="/categorias" routeRegister="/categorias/cadastrar" default-active="register" />
+        <LinkDinamicoComponent routeList="/modelo" routeRegister="/modelo/cadastrar" default-active="register" />
 
 
         <div class="table-display mt-4 w-100">
-          <table class="table-secondary table-sm w-100 table-bordered border-dark" >
-         <thead class="table-dark">
+
+          <table class="table table-primary table-striped  table-sm w-100 table-bordered border-light">
+         <thead class="text-white">
            <tr>
              <th scope="col">Id</th>
              <th scope="col">Modelo</th>

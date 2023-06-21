@@ -4,13 +4,14 @@
         
     <div class="main-content d-flex flex-column align-items-start">
         <div class="page-header d-flex justify-content-between align-items-center">
-        <LinkDinamicoComponent routeList="/marca" routeRegister="/marca/cadastrar" default-active="register" />
+        <LinkDinamicoComponent routeList="/movimentacoes" routeRegister="/movimentacoes/cadastrar" default-active="register" />
          </div>           
     </div>
 
 
 <div class="table-display mt-4 w-100">
-        <table class="table-secondary table-sm w-100 table-bordered border-dark" >
+
+  <table class="table table-primary table-striped  table-sm w-100 table-bordered border-light">
          <thead class="text-white">
            <tr >
              <th scope="col">Id</th>
@@ -26,13 +27,13 @@
           </thead>
           <tbody class="text-white">
           <tr>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
 
             <td>
               <div class="d-flex justify-content-center actions">
@@ -60,6 +61,8 @@
   </template>
 
 <style>
+
+
 
 table{
 

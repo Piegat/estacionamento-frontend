@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <div class="card text-white bg-secondary mb-3">
+    <div class="card text-dark mb-3">
       <div class="card-body">
         <h5 class="card-title">Marcas</h5>
         <p class="card-text">Redirecionar para a lista de marcas.</p>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-sm-4 ">
-    <div class="card text-white bg-secondary mb-3">
+    <div class="card text-dark mb-3">
       <div class="card-body">
         <h5 class="card-title">Veiculos</h5>
         <p class="card-text">Redirecionar para a lista de veiculos.</p>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="col-sm-4" >
-    <div class="card text-white bg-secondary mb-3">
+    <div class="card text-dark mb-3">
       <div class="card-body">
         <h5 class="card-title ">Modelos</h5>
         <p class="card-text">Redirecionar para a lista de modelos.</p>
@@ -49,6 +49,14 @@ h1{
 
     margin: 0px;
     margin-top: 15rem;
+}
+
+.card-body{
+
+  border-radius: 11px;
+  background-color: #bacbe6;
+
+
 }
 
 

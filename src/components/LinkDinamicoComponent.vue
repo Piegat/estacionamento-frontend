@@ -1,6 +1,6 @@
 <template>
-    <div class="link-path d-flex align-items-center mt-2">
-        <button class="button-usersList bg-primary" :class="{ active: activeButton === 'register' }"
+    <div class="link-path d-flex align-items-center mt-1">
+        <button class="button-usersList " :class="{ active: activeButton === 'register' }"
             @click="navigateTo(routeRegister)">
             Cadastrar Novo
         </button>
@@ -50,11 +50,11 @@ export default {
     
     border-radius: 4px;
     font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
+    background-color: #cfe2ff;
+    color: #000000;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     margin-right: 10px;
-    margin-left: 70rem;
+    margin-left: 81rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
     outline: none;
 }

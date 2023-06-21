@@ -1,30 +1,19 @@
  <template>
 
-<div class="container">
-  <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
+<div class="container bg-dark">
+    <header class="d-flex flex-wrap justify-content-center py-2 mb-3 ">
+        <span class="fs-4 text-white d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">Estacionamento</span>
 
-        <li class="nav-item">
-          <a href="/menuveiculo" type="button" class="borda1 btn btn-outline-primary">Veiculos</a>
-        </li>
-        <li class="nav-item">
-          <a href="/condutor" type="button" class="btn btn-outline-primary">Condutores</a>
-        </li>
-        <li class="nav-item">
-          <a href="/" type="button" class="btn btn-outline-primary">Inicio</a></li>
-        <li class="nav-item">
-          <a href="/movimentacoes" type="button" class="btn btn-outline-primary">Movimentações</a>
-        </li>
-        <li class="nav-item">
-          <a href="/configuracoes" type="button" class="borda2 btn btn-outline-primary">Configurações</a>
-        </li>
-        </div>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/" type="button" class="nav-link text-white">Inicio</a></li>
+        <li class="nav-item"><a href="/menuveiculo" type="button" class="nav-link text-white">Veiculos</a></li>
+        <li class="nav-item"><a href="/condutor" type="button" class="nav-link text-white">Condutores</a></li>
+        <li class="nav-item"><a href="/movimentacoes" type="button" class="nav-link text-white">Movimentações</a></li>
+        <li class="nav-item"><a href="/configuracoes" type="button" class="nav-link text-white">Configurações</a></li>
       </ul>
     </header>
   </div>
-  </div>
+
   </template>
   
   <script lang="ts">
@@ -56,6 +45,12 @@
 
 }
 
+  .container{
+
+    width: 100rem;
+    max-width: 100vw;
+
+  }
 
   .navbar{
     height: 100%;
