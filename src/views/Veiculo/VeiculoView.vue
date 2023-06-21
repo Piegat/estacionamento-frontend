@@ -3,7 +3,7 @@
     <Estacionamento/>
     <div class="main-content d-flex flex-column align-items-start">
         <div class="page-header d-flex justify-content-between align-items-center">
-        <LinkDinamicoComponent routeList="/marca" routeRegister="/marca/cadastrar" default-active="register" />
+        <LinkDinamicoComponent routeList="/veiculo" routeRegister="/veiculo/cadastrar" default-active="register" />
          </div>           
     </div>
 
