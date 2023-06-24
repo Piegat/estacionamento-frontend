@@ -20,7 +20,7 @@ export class MarcaClient{
     }
 
 
-    public async findAll(): Promise<Marca[]> {
+    public async findByAll(): Promise<Marca[]> {
         try {
             return (await this.axiosClient.get<Marca[]>(`/lista`)).data
         } catch (error: any) {

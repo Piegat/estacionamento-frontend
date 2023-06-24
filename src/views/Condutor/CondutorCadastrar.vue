@@ -88,11 +88,32 @@ form{
   <script lang="ts">
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
+import { CondutorClient } from '@/client/CondutorClient';
+import { Condutor } from '@/modal/Codutor';
   
   export default defineComponent({
     name: 'CondutorCadastrar',
     components: {
       Estacionamento,
     },
+    data() {
+    return { 
+      condutor: new Condutor(),
+      mensagem: {
+        ativo: false as boolean,
+        titulo: "" as string,
+        mensagem: "" as string,
+        css: "" as string
+      }
+    }
+  },
+
+
+    computed: {
+    id () {
+      return this.$route.query.id
+    }},
+
+
   });
   </script>

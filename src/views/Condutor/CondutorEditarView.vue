@@ -20,5 +20,16 @@ h1{
     components: {
       Estacionamento,
     },
+    
+
+    computed: {
+
+      id(){
+
+        return this.$route.query.Id
+      }
+
+    }
+
   });
   </script>

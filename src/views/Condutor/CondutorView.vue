@@ -19,24 +19,29 @@
               <th scope="col">Telefone</th>
               <th scope="col">Horas Pagas</th>
               <th scope="col">Horas Desc</th>
+              <th scope="col">Ativo</th>
               <th scope="col" style="width:250px">Ação</th>
 
 
             </tr>
           </thead>
           <tbody class="">
-          <tr>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
+          <tr v-for="item in condutorList" :key="item.id">
+            <td> {{ item.id }}</td>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.cpf }}</td>
+            <td>{{ item.telefone }}</td>
+            <td>{{ item.horasPagas }}</td>
+            <td>{{ item.horasDesconto }}</td>
+            <td>
+              <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
+              <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
+            </td>
 
             <td>
               <div class="d-flex justify-content-center actions">
-                <button class="btn btn-sm btn-primary me-1">
-                  <i class="bi bi-pencil-square"></i> Editar </button>
+                <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'CondutorEditar', query: { id: item.id } }">
+                  <i class="bi bi-pencil-square"></i> Editar </router-link>
 
                   <button class="btn btn-sm btn-success me-1">
                   <i class="bi bi-pencil-square"></i> Detalhar </button>
@@ -103,6 +108,8 @@ td {
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
   import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
+import { Condutor } from '@/modal/Codutor';
+import { CondutorClient } from '@/client/CondutorClient';
 
 
   export default defineComponent({
@@ -111,5 +118,36 @@ td {
       Estacionamento,
       LinkDinamicoComponent
     },
+
+    data() {
+    return {
+        condutorList: new Array<Condutor>()
+    }
+  },
+    mounted() {
+    this.findAll();
+  },
+
+
+    methods: {
+
+    findAll() {
+
+      const condutorClient = new CondutorClient
+
+      condutorClient.findByAll()
+      .then(sucess => {
+    
+      this.condutorList = sucess
+    
+    }
+    )
+    .catch(error => {
+      console.log(error);
+    });
+}
+}
+
+
   });
   </script>
