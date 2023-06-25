@@ -28,6 +28,15 @@ export class MovimentacaoClient{
         }
     }
 
+    public async findByAbertas(): Promise<Movimentacao[]> {
+        try {
+            return (await this.axiosClient.get<Movimentacao[]>(`/abertas`)).data
+        } catch (error: any) {
+            return Promise.reject(error.response)
+        }
+    }
+
+
 
     public async findByAtivos(): Promise<Movimentacao> {
         try {
