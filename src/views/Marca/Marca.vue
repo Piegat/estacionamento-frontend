@@ -29,8 +29,6 @@
                 <button class="btn btn-sm btn-primary me-1">
                   <i class="bi bi-pencil-square"></i> Editar </button>
 
-                  <button class="btn btn-sm btn-success me-1">
-                  <i class="bi bi-pencil-square"></i> Detalhar </button>
 
 
                 <button class="btn btn-sm btn-danger" >

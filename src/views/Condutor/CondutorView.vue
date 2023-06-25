@@ -43,9 +43,6 @@
                 <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'CondutorEditar', query: { id: item.id } }">
                   <i class="bi bi-pencil-square"></i> Editar </router-link>
 
-                  <button class="btn btn-sm btn-success me-1">
-                  <i class="bi bi-pencil-square"></i> Detalhar </button>
-
 
                 <button class="btn btn-sm btn-danger" >
                   <i class="bi bi-trash"></i> Excluir </button>

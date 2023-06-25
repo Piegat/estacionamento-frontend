@@ -16,6 +16,7 @@
            <tr >
              <th scope="col">Id</th>
               <th scope="col">Veiculo</th>
+              <th scope="col">Placa</th>
               <th scope="col">Condutor</th>
               <th scope="col">Entrada</th>
               <th scope="col">Saida</th>
@@ -26,22 +27,20 @@
             </tr>
           </thead>
           <tbody class="text-white">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <tr v-for="item in movimentacaoList" :key="item.id">
+            <td>{{ item.id }}</td>
+            <td>{{ item.veiculo.modelo.nome }}</td>
+            <td>{{ item.veiculo.placa }}</td>
+            <td>{{ item.condutor.nome }}</td>
+            <td>{{ item.entrada }}</td>
+            <td>{{ item.saida }}</td>
+            <td>{{ item.horasMulta + " Horas e " + item.minutosMulta + " Minutos" }}</td>
+            <td>{{ item.valorTotal }}</td>
 
             <td>
               <div class="d-flex justify-content-center actions">
                 <button class="btn btn-sm btn-primary me-1">
                   <i class="bi bi-pencil-square"></i> Editar </button>
-
-                  <button class="btn btn-sm btn-success me-1">
-                  <i class="bi bi-pencil-square"></i> Detalhar </button>
 
 
                 <button class="btn btn-sm btn-danger" >
@@ -107,6 +106,8 @@ td {
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
   import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
+import { Movimentacao } from '@/modal/Movimentacao';
+import { MovimentacaoClient } from '@/client/MovimentacaoClient';
 
   export default defineComponent({
     name: 'MovimentacaoVue',
@@ -114,5 +115,36 @@ td {
       Estacionamento,
       LinkDinamicoComponent
     },
+    
+    data() {
+    return {
+        movimentacaoList: new Array<Movimentacao>()
+    }
+  },
+    mounted() {
+    this.findAll();
+  },
+
+
+    methods: {
+
+    findAll() {
+
+      const movimentacaoClient = new MovimentacaoClient
+
+      movimentacaoClient.finByAll()
+      .then(sucess => {
+    
+      this.movimentacaoList = sucess
+    
+    }
+    )
+    .catch(error => {
+      console.log(error);
+    });
+}
+}
+
+
   });
   </script>

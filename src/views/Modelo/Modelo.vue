@@ -18,18 +18,16 @@
             </tr>
           </thead>
           <tbody class="text-white">
-          <tr>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
+            <tr v-for="item in modeloList" :key="item.id">
+            <td> {{ item.id }}</td>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.marca.marca }}</td>
 
             <td>
               <div class="d-flex justify-content-center actions">
                 <button class="btn btn-sm btn-primary me-1">
                   <i class="bi bi-pencil-square"></i> Editar </button>
 
-                  <button class="btn btn-sm btn-success me-1">
-                  <i class="bi bi-pencil-square"></i> Detalhar </button>
 
 
                 <button class="btn btn-sm btn-danger" >
@@ -94,6 +92,10 @@ td {
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
   import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
+import { Modelo } from '@/modal/Modelo';
+import { ModeloClient } from '@/client/ModeloClient';
+import { Marca } from '@/modal/Marca';
+import { MarcaClient } from '@/client/MarcaClient';
 
   export default defineComponent({
     name: 'ModeloView',
@@ -101,5 +103,36 @@ td {
       Estacionamento,
       LinkDinamicoComponent
     },
+    data() {
+    return {
+      modeloList: new Array<Modelo>(),
+    }
+  },
+    mounted() {
+    this.findAll();
+  },
+
+
+    methods: {
+    
+
+    findAll() {
+
+      const modeloClient = new ModeloClient
+
+      modeloClient.findByAll()
+      .then(sucess => {
+    
+      this.modeloList = sucess
+    
+    }
+    )
+    .catch(error => {
+      console.log(error);
+    });
+}
+}
+
+
   });
   </script>

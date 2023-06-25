@@ -6,7 +6,7 @@ export class ModeloClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:3000/api/modelo',
+            baseURL: 'http://localhost:8080/api/modelo',
             headers: { 'Content-type': 'application/json' }
         })
     }
@@ -20,7 +20,7 @@ export class ModeloClient{
     }
 
 
-    public async findAll(): Promise<Modelo[]> {
+    public async findByAll(): Promise<Modelo[]> {
         try {
             return (await this.axiosClient.get<Modelo[]>(`/lista`)).data
         } catch (error: any) {
