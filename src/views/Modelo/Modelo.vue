@@ -21,7 +21,7 @@
             <tr v-for="item in modeloList" :key="item.id">
             <td> {{ item.id }}</td>
             <td>{{ item.nome }}</td>
-            <td>{{ item.marca.marca }}</td>
+            <td>{{ item.marca.nome }}</td>
 
             <td>
               <div class="d-flex justify-content-center actions">

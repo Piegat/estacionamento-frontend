@@ -2,24 +2,28 @@
     <div class="Marca">
       <Estacionamento/>
 
-      <form>
-  <!-- Name input -->
+      <form  @submit.prevent="submitForm">
+  <div class="aviso">
+  <div v-if="mensagem.ativo" :class= "mensagem.css" role="alert">
+      <h4 class="alert-heading">{{mensagem.titulo}}</h4>
+      <p>{{ mensagem.texto }}</p>
+    </div>
+  </div>
 
     <label for="categoria-id" class=" d-flex">Nome da Marca:</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example1" class="wid form-control " placeholder="Nome da Marca" />
+    <input type="text" id="marca-nome" class="wid form-control " placeholder="Nome da Marca" v-model="marcaModel.nome"/>
   </div>
 
 
   <!-- Message input -->
 
   <!-- Submit button -->
-  <a type="submit" href="/marca" class="espace btn btn-primary btn-block mb-4">Cadastrar</a>
+  <button type="submit" href="/marca" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Cadastrar</button>
 
-  <a  href="/marca" class="espace btn btn-danger btn-block mb-4 ">Cancelar</a>
+  <a  href="/marca" class="espace btn btn-danger btn-block mb-4 ">Voltar</a>
 
 </form>
-
 
     </div>
   </template>
@@ -66,16 +70,77 @@ form{
 
 }
 
+.aviso{
+
+  border-radius: 15px;
+  width: 30rem;
+  margin-left: 32rem;
+  margin-bottom: -7rem;
+
+}
+
 </style>
 
   <script lang="ts">
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
+import { Marca } from '@/modal/Marca';
+import { MarcaClient } from '@/client/MarcaClient';
   
   export default defineComponent({
     name: 'MarcaCadastrar',
     components: {
       Estacionamento,
+
+
     },
+    data() {
+        return {
+            marcaModel: new Marca(),
+            marcaClient: new MarcaClient(),
+            nameMarca: String,
+
+            mensagem: {
+                ativo: false as boolean,
+                titulo: "" as string,
+                texto: "" as string,
+                css: "" as string
+            }
+
+
+
+                  };
+    },
+    methods: {
+      async submitForm() {
+            const marca = new Marca();
+            marca.ativo = true;
+            marca.nome = this.marcaModel.nome;
+            marca.cadastro = new Date()
+
+            this.marcaClient.save(marca)
+                .then((response) => {
+                    console.log(response);
+
+                    this.mensagem.ativo = true;
+                this.mensagem.titulo = "Cadastrado!";
+                this.mensagem.texto = "A marca foi cadastrada com sucesso!";
+                this.mensagem.css = "alert alert-success alert-dismissible fade show";
+
+                })
+                .catch((error) => {
+                    console.log(error);
+
+                    this.mensagem.ativo = true;
+                this.mensagem.titulo = "Algo deu errado!";
+                this.mensagem.texto = error.data;
+                this.mensagem.css = "alert alert-danger alert-dismissible fade show"
+
+                });
+        }
+
+
+    }
+
   });
   </script>

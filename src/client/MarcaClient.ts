@@ -6,14 +6,14 @@ export class MarcaClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8080/api/marca',
+            baseURL: 'http://localhost:8080/api/',
             headers: { 'Content-type': 'application/json' }
         })
     }
 
     public async findById(id: number): Promise<Marca> {
         try {
-            return (await this.axiosClient.get<Marca>(`?id=1${id}`)).data
+            return (await this.axiosClient.get<Marca>(`marca?id=${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -22,7 +22,7 @@ export class MarcaClient{
 
     public async findByAll(): Promise<Marca[]> {
         try {
-            return (await this.axiosClient.get<Marca[]>(`/lista`)).data
+            return (await this.axiosClient.get<Marca[]>(`marca/lista`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -31,7 +31,7 @@ export class MarcaClient{
 
     public async findByAtivos(): Promise<Marca> {
         try {
-            return (await this.axiosClient.get<Marca>(`/ativo`)).data
+            return (await this.axiosClient.get<Marca>(`marca/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -43,7 +43,7 @@ export class MarcaClient{
 
     public async save(Marca: Marca): Promise<Marca> {
         try {
-            return (await this.axiosClient.post('', Marca)).data
+            return (await this.axiosClient.post('marca', Marca)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -51,7 +51,7 @@ export class MarcaClient{
 
     public async update(Marca: Marca): Promise<Marca> {
         try {
-            return (await this.axiosClient.put<Marca>('', Marca)).data
+            return (await this.axiosClient.put<Marca>('marca', Marca)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -59,7 +59,7 @@ export class MarcaClient{
 
     public async delete(id: number): Promise<void> {
         try {
-            await this.axiosClient.delete(`?id=${id}`)
+            await this.axiosClient.delete(`marca?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
         }
