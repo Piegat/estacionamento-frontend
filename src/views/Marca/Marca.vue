@@ -16,6 +16,7 @@
                      <tr >
              <th scope="col">Id</th>
               <th scope="col">Marca</th>
+              <th scope="col" style="width:200px">ativo</th>
               <th scope="col" style="width:250px">Ação</th>
             </tr>
           </thead>
@@ -23,6 +24,11 @@
             <tr v-for="item in marcalist" :key="item.id">
             <td> {{ item.id }}</td>
             <td>{{ item.nome }}</td>
+            <td>
+              <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
+              <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
+            </td>
+
 
             <td>
                 <div class="d-flex justify-content-center actions">

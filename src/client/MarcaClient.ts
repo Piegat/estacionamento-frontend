@@ -29,13 +29,14 @@ export class MarcaClient{
     }
 
 
-    public async findByAtivos(): Promise<Marca> {
+    public async findByAtivos(): Promise<Marca[]> {
         try {
-            return (await this.axiosClient.get<Marca>(`marca/ativo`)).data
+            return (await this.axiosClient.get<Marca[]>(`marca/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
     }
+
 
 
 

@@ -6,14 +6,14 @@ export class ModeloClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8080/api/modelo',
+            baseURL: 'http://localhost:8080/api',
             headers: { 'Content-type': 'application/json' }
         })
     }
 
     public async findById(id: number): Promise<Modelo> {
         try {
-            return (await this.axiosClient.get<Modelo>(`?id=1${id}`)).data
+            return (await this.axiosClient.get<Modelo>(`modelo?id=${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -22,16 +22,16 @@ export class ModeloClient{
 
     public async findByAll(): Promise<Modelo[]> {
         try {
-            return (await this.axiosClient.get<Modelo[]>(`/lista`)).data
+            return (await this.axiosClient.get<Modelo[]>(`modelo/lista`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
     }
 
 
-    public async findByAtivos(): Promise<Modelo> {
+    public async findByAtivos(): Promise<Modelo[]> {
         try {
-            return (await this.axiosClient.get<Modelo>(`/ativo`)).data
+            return (await this.axiosClient.get<Modelo[]>(`modelo/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -43,7 +43,7 @@ export class ModeloClient{
 
     public async save(Modelo: Modelo): Promise<Modelo> {
         try {
-            return (await this.axiosClient.post('', Modelo)).data
+            return (await this.axiosClient.post('modelo', Modelo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -51,7 +51,7 @@ export class ModeloClient{
 
     public async update(Modelo: Modelo): Promise<Modelo> {
         try {
-            return (await this.axiosClient.put<Modelo>('', Modelo)).data
+            return (await this.axiosClient.put<Modelo>('modelo', Modelo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -59,7 +59,7 @@ export class ModeloClient{
 
     public async delete(id: number): Promise<void> {
         try {
-            await this.axiosClient.delete(`?id=${id}`)
+            await this.axiosClient.delete(`modelo?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
         }
