@@ -20,9 +20,9 @@
             </tr>
           </thead>
           <tbody class="text-white">
-          <tr>
-            <td>a</td>
-            <td>a</td>
+            <tr v-for="item in marcalist" :key="item.id">
+            <td> {{ item.id }}</td>
+            <td>{{ item.marca }}</td>
 
             <td>
                 <div class="d-flex justify-content-center actions">
@@ -94,12 +94,45 @@ td {
   import { defineComponent } from 'vue';
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
   import LinkDinamicoComponent from '@/components/LinkDinamicoComponent.vue'; // @ is an alias to /src
+  import { Marca } from '@/modal/Marca';
+  import { MarcaClient } from '@/client/MarcaClient';
 
   export default defineComponent({
     name: 'MarcaView',
     components: {
       Estacionamento,
       LinkDinamicoComponent
-    },
+    }, 
+    
+    data() {
+    return {
+        marcalist: new Array<Marca>()
+    }
+  },
+    mounted() {
+    this.findAll();
+  },
+
+
+    methods: {
+
+    findAll() {
+
+      const marcaClient = new MarcaClient
+
+      marcaClient.findByAll()
+      .then(sucess => {
+    
+      this.marcalist = sucess
+    
+    }
+    )
+    .catch(error => {
+      console.log(error);
+    });
+}
+}
+
+
   });
   </script>
