@@ -14,8 +14,8 @@
 
     <label for="categoria-id" class="mtop d-flex">Nome do Modelo:</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example1" class="wid form-control " placeholder="Nome do Modelo" v-model="modeloModel.nome"/>
-  </div>
+    <input type="text" id="form4Example1" class="wid form-control " placeholder="Nome do Modelo"  v-model="modeloModel.nome"/>
+  </div>/
 
   <label for="categoria-id" class=" d-flex">Marca do Modelo::</label>
   <div class="form-outline mb-4">

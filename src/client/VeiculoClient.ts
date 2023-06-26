@@ -1,4 +1,5 @@
 import { Movimentacao } from "@/modal/Movimentacao"
+import { Veiculo } from "@/modal/Veiculo"
 import axios, { AxiosInstance } from "axios"
 
 export class VeiculoClient{
@@ -6,23 +7,23 @@ export class VeiculoClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:3000/api/veiculo',
+            baseURL: 'http://localhost:8080/api',
             headers: { 'Content-type': 'application/json' }
         })
     }
 
-    public async findById(id: number): Promise<Movimentacao> {
+    public async findById(id: number): Promise<Veiculo> {
         try {
-            return (await this.axiosClient.get<Movimentacao>(`?id=1${id}`)).data
+            return (await this.axiosClient.get<Veiculo>(`veiculo?id=1${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
     }
 
 
-    public async findAll(): Promise<Movimentacao[]> {
+    public async findByAll(): Promise<Veiculo[]> {
         try {
-            return (await this.axiosClient.get<Movimentacao[]>(`/lista`)).data
+            return (await this.axiosClient.get<Veiculo[]>(`veiculo/lista`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -31,7 +32,7 @@ export class VeiculoClient{
 
     public async findByAtivos(): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.get<Movimentacao>(`/ativo`)).data
+            return (await this.axiosClient.get<Movimentacao>(`veiculo/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -41,17 +42,17 @@ export class VeiculoClient{
 
 
 
-    public async save(Movimentacao: Movimentacao): Promise<Movimentacao> {
+    public async save(Veiculo: Veiculo): Promise<Veiculo> {
         try {
-            return (await this.axiosClient.post('', Movimentacao)).data
+            return (await this.axiosClient.post('veiculo', Veiculo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async update(Movimentacao: Movimentacao): Promise<Movimentacao> {
+    public async update(Veiculo: Veiculo): Promise<Veiculo> {
         try {
-            return (await this.axiosClient.put<Movimentacao>('', Movimentacao)).data
+            return (await this.axiosClient.put<Veiculo>('veiculo', Veiculo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -59,7 +60,7 @@ export class VeiculoClient{
 
     public async delete(id: number): Promise<void> {
         try {
-            await this.axiosClient.delete(`?id=${id}`)
+            await this.axiosClient.delete(`veiculo?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
         }

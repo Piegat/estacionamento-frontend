@@ -8,7 +8,7 @@ export class Veiculo extends AbstractEntity{
     modelo!: Modelo
     placa!: string
     cor!: Cor
-    tipoVeiculo!: Tipo
+    tipoVeiculos!: Tipo
     ano!: number
 
 }

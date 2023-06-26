@@ -14,6 +14,7 @@
              <th scope="col">Id</th>
              <th scope="col">Modelo</th>
               <th scope="col">Marca</th>
+              <th scope="col">Ativo</th>
               <th scope="col" style="width:250px">Ação</th>
             </tr>
           </thead>
@@ -22,6 +23,11 @@
             <td> {{ item.id }}</td>
             <td>{{ item.nome }}</td>
             <td>{{ item.marca.nome }}</td>
+            <td>
+              <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
+              <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
+            </td>
+
 
             <td>
               <div class="d-flex justify-content-center actions">
