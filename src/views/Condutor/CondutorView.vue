@@ -44,7 +44,7 @@
                   <i class="bi bi-pencil-square"></i> Editar </router-link>
 
 
-                <button class="btn btn-sm btn-danger" >
+                  <button class="btn btn-sm btn-danger" @click="excluir(item.id)" >
                   <i class="bi bi-trash"></i> Excluir </button>
               </div>
             </td>
@@ -142,7 +142,27 @@ import { CondutorClient } from '@/client/CondutorClient';
     .catch(error => {
       console.log(error);
     });
-}
+},
+
+  async excluir(id: number){
+    const confirmation = confirm("Você tem certeza de que deseja excluir esse condutor?");
+      if (!confirmation) {
+        return;
+      }
+
+      try {
+
+        const condutorClient = new CondutorClient();
+        await condutorClient.delete(id);
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
+
+
+
+  }
+
 }
 
 

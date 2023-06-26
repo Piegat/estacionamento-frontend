@@ -8,14 +8,14 @@ export class CondutorClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8080/api/condutor',
+            baseURL: 'http://localhost:8080/api',
             headers: { 'Content-type': 'application/json' }
         })
     }
 
     public async findByAll(): Promise<Condutor[]> {
         try {
-            return (await this.axiosClient.get<Condutor[]>(`/lista`)).data
+            return (await this.axiosClient.get<Condutor[]>(`condutor/lista`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -25,7 +25,7 @@ export class CondutorClient{
 
     public async findById(id: number): Promise<Condutor> {
         try {
-            return (await this.axiosClient.get<Condutor>(`?id=${id}`)).data
+            return (await this.axiosClient.get<Condutor>(`condutor?id=${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -33,7 +33,7 @@ export class CondutorClient{
 
     public async findByAtivos(): Promise<Condutor> {
         try {
-            return (await this.axiosClient.get<Condutor>(`/ativo`)).data
+            return (await this.axiosClient.get<Condutor>(`condutor/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -45,7 +45,7 @@ export class CondutorClient{
 
     public async save(Condutor: Condutor): Promise<Condutor> {
         try {
-            return (await this.axiosClient.post('', Condutor)).data
+            return (await this.axiosClient.post('condutor', Condutor)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -53,7 +53,7 @@ export class CondutorClient{
 
     public async update(Condutor: Condutor): Promise<Condutor> {
         try {
-            return (await this.axiosClient.put<Condutor>('', Condutor)).data
+            return (await this.axiosClient.put<Condutor>('condutor', Condutor)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -61,7 +61,7 @@ export class CondutorClient{
 
     public async delete(id: number): Promise<void> {
         try {
-            await this.axiosClient.delete(`?id=${id}`)
+            await this.axiosClient.delete(`condutor?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
         }
