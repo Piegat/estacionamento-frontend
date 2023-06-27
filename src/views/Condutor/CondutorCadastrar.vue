@@ -19,12 +19,12 @@
 
 <label for="categoria-id" class=" d-flex">CPF:</label>
 <div class="form-outline mb-4">
-  <input type="text" id="form4Example1" class="wid form-control " placeholder="CPF"  v-model="condutorModel.cpf"/>
+  <input type="text" id="form4Example1" class="wid form-control " placeholder="CPF" v-maska data-maska="###.###.###-##"  v-model="condutorModel.cpf"/>
 </div>
 
 <label for="categoria-id" class=" d-flex">Telefone:</label>
 <div class="form-outline mb-4">
-  <input type="text" id="form4Example1" class="wid form-control " placeholder="Telefone"  v-model="condutorModel.telefone"/>
+  <input type="text" id="form4Example1" class="wid form-control " placeholder="Telefone" v-maska data-maska="(###) #####-####"  v-model="condutorModel.telefone"/>
 </div>
 
 
@@ -100,6 +100,11 @@ margin-bottom: -7rem;
 
 
 </style>
+
+<script setup lang="ts">
+import { vMaska } from "maska";
+</script>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue';

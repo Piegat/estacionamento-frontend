@@ -3,7 +3,7 @@
     <Estacionamento/>
       
   <div class="main-content d-flex flex-column align-items-start">
-      <LinkDinamicoComponent routeList="/modelo" routeRegister="/modelo/cadastrar" default-active="register" />
+      <LinkDinamicoComponent routeList="/veiculo" routeRegister="/veiculo/cadastrar" default-active="register" />
 
 
       <div class="table-display mt-4 w-100">
