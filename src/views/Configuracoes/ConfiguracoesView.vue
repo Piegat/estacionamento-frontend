@@ -214,7 +214,6 @@ export default defineComponent({
         return;
       }
 
-
           this.configuracaoClient.update(this.configuracaoModel)
               .then((response) => {
                   console.log(response);

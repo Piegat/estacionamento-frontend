@@ -51,9 +51,9 @@ export class CondutorClient{
         }
     }
 
-    public async update(Condutor: Condutor): Promise<Condutor> {
+    public async update(Condutor: Condutor, id: number): Promise<Condutor> {
         try {
-            return (await this.axiosClient.put<Condutor>('condutor', Condutor)).data
+            return (await this.axiosClient.put<Condutor>(`condutor?id=${id}`, Condutor)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }

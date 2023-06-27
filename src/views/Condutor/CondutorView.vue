@@ -1,8 +1,9 @@
 <template>
 <Estacionamento/>
 <div class="condutor">
-        
+    
     <div class="main-content d-flex flex-column align-items-start">
+      
         <div class="page-header d-flex justify-content-between align-items-center">
         <LinkDinamicoComponent routeList="/condutor" routeRegister="/condutor/cadastrar" default-active="register" />
          </div>           

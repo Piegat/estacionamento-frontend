@@ -45,8 +45,8 @@
                   <i class="bi bi-pencil-square"></i> Editar </router-link>
 
 
-                <button class="btn btn-sm btn-success" >
-                  <i class="bi bi-trash"></i> Detalhar </button>
+                  <router-link class="btn btn-sm btn-success me-1" :to="{name: 'MovimentacaoCupom', query: { id: item.id } }">
+                  <i class="bi bi-pencil-square"></i> Detalhar </router-link>
               </div>
             </td>
           </tr>

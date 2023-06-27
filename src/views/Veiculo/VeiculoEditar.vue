@@ -161,7 +161,7 @@
     mounted() {
     this.findModelo();
 
-    this.findById(this.id);
+    this.findById(Number(this.id));
      },
      
     computed: {
@@ -214,7 +214,7 @@
       async submitForm() {
   
   
-            this.veiculoClient.update(this.veiculoModel, this.id)
+            this.veiculoClient.update(this.veiculoModel, Number(this.id))
                 .then((response) => {
                     console.log(response);
   

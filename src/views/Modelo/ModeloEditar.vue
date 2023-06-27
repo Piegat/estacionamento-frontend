@@ -133,7 +133,7 @@ import { ModeloClient } from '@/client/ModeloClient';
     },
     mounted(){
         this.findMarca()
-        this.findById(this.id);
+        this.findById(Number(this.id))
 
 },
 
@@ -183,7 +183,7 @@ import { ModeloClient } from '@/client/ModeloClient';
 
       async submitForm() {
 
-            this.modeloClient.update(this.modeloModel, this.id)
+            this.modeloClient.update(this.modeloModel, Number(this.id))
                 .then((response) => {
                     console.log(response);
 

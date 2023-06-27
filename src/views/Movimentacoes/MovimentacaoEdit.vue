@@ -238,8 +238,15 @@ export default defineComponent({
               .then((response) => {
                   console.log(response);
 
-                console.log(this.movimentacaoModel)
-                
+                  
+                  if (this.movimentacaoModel.saida != null) {
+
+                    this.$router.push({name: "MovimentacaoCupom",   query: { id: this.movimentacaoModel.id} } )
+
+
+                  }
+
+
                   this.mensagem.ativo = true;
               this.mensagem.titulo = "Atualizada!";
               this.mensagem.texto = "A movimentação foi cadastrada com sucesso!";
