@@ -49,9 +49,9 @@ export class ModeloClient{
         }
     }
 
-    public async update(Modelo: Modelo): Promise<Modelo> {
+    public async update(Modelo: Modelo, id: number): Promise<Modelo> {
         try {
-            return (await this.axiosClient.put<Modelo>('modelo', Modelo)).data
+            return (await this.axiosClient.put<Modelo>(`modelo?id=${id}`, Modelo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }

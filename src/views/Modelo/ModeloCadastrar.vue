@@ -19,7 +19,7 @@
 
   <label for="categoria-id" class=" d-flex">Marca do Modelo::</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="marcaModel">
+    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="modeloModel.marca">
       <option v-for="marca in marcalist" :value="marca">{{ marca.nome }}</option>
         </select>
       </div>
@@ -158,13 +158,8 @@ import { ModeloClient } from '@/client/ModeloClient';
 
 
       async submitForm() {
-            const modelo = new Modelo();
-            modelo.ativo = true;
-            modelo.nome = this.modeloModel.nome;
-            modelo.marca = this.marcaModel;
-            modelo.cadastro = new Date()
 
-            this.modeloClient.save(modelo)
+            this.modeloClient.save(this.modeloModel)
                 .then((response) => {
                     console.log(response);
 
@@ -176,7 +171,7 @@ import { ModeloClient } from '@/client/ModeloClient';
                 })
                 .catch((error) => {
                     console.log(error);
-                    console.log(modelo.marca)
+                    console.log(this.modeloModel.marca)
                     this.mensagem.ativo = true;
                 this.mensagem.titulo = "Algo deu errado!";
                 this.mensagem.texto = error.data;

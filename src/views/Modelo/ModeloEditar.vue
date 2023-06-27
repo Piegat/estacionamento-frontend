@@ -19,7 +19,7 @@
 
   <label for="categoria-id" class=" d-flex">Marca do Modelo::</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control "  v-model="marcaModel">
+    <select id="form4Example1" class="wid form-control "  v-model="modeloModel.marca">
       <option v-for="marca in marcalist" :value="marca">{{ marca.nome }}</option>
         </select>
       </div>
@@ -28,7 +28,7 @@
   <!-- Message input -->
 
   <!-- Submit button -->
-  <button type="submit" href="/modelo" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Cadastrar</button>
+  <button type="submit" href="/modelo" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Editar</button>
 
   <a  href="/modelo" class="espace btn btn-danger btn-block mb-4 ">Cancelar</a>
 
@@ -117,6 +117,7 @@ import { ModeloClient } from '@/client/ModeloClient';
 
             modeloModel: new Modelo(),
             modeloClient: new ModeloClient(),
+
             
 
             mensagem: {
@@ -130,13 +131,36 @@ import { ModeloClient } from '@/client/ModeloClient';
 
                   };
     },
-    mounted() {
-    this.findMarca();
-  },
+    mounted(){
+        this.findMarca()
+        this.findById(this.id);
 
+},
 
+    computed: {
+    id() {
+    return this.$route.query.id
+    },
+    },
 
     methods: {
+
+
+    findById(id: number) {
+    const modeloClient = new ModeloClient()
+    modeloClient
+    .findById(id)
+    .then(sucess => {
+    this.modeloModel = sucess
+    })
+    .catch(error => {
+    this.mensagem.ativo = true;
+
+    this.mensagem.titulo = "Algo deu errado!";
+        this.mensagem.texto = error.data;
+        this.mensagem.css = "alert alert-danger alert-dismissible fade show"
+    })
+    },
 
     findMarca(){
 
@@ -158,25 +182,20 @@ import { ModeloClient } from '@/client/ModeloClient';
 
 
       async submitForm() {
-            const modelo = new Modelo();
-            modelo.ativo = true;
-            modelo.nome = this.modeloModel.nome;
-            modelo.marca = this.marcaModel;
-            modelo.cadastro = new Date()
 
-            this.modeloClient.save(modelo)
+            this.modeloClient.update(this.modeloModel, this.id)
                 .then((response) => {
                     console.log(response);
 
                     this.mensagem.ativo = true;
-                this.mensagem.titulo = "Cadastrado!";
-                this.mensagem.texto = "O modelo foi cadastrada com sucesso!";
+                this.mensagem.titulo = "Atualizado!";
+                this.mensagem.texto = "O modelo foi editado com sucesso!";
                 this.mensagem.css = "alert alert-success alert-dismissible fade show";
 
                 })
                 .catch((error) => {
                     console.log(error);
-                    console.log(modelo.marca)
+                    console.log(this.modeloModel)
                     this.mensagem.ativo = true;
                 this.mensagem.titulo = "Algo deu errado!";
                 this.mensagem.texto = error.data;
