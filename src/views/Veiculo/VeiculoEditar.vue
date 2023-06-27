@@ -14,14 +14,14 @@
   
     <label for="categoria-id" class="mtop d-flex">Modelo:</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="veiculoModel.modelo">
+    <select id="form4Example1" class="wid form-control "  v-model="veiculoModel.modelo">
       <option v-for="modelo in modelolist" :value="modelo">{{ modelo.nome }}</option>
         </select>
   </div>
   
   <label for="categoria-id" class=" d-flex">Tipo de veiculo:</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="veiculoModel.tipoVeiculos">
+    <select id="form4Example1" class="wid form-control "  v-model="veiculoModel.tipoVeiculos">
       <option v-for="tipos in tipo" :value="tipos">{{ tipos }}</option>
         </select>
       </div>
@@ -29,27 +29,27 @@
   
       <label for="categoria-id" class=" d-flex">Cor:</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="veiculoModel.cor">
+    <select id="form4Example1" class="wid form-control "  v-model="veiculoModel.cor">
       <option v-for="cores in cor" :value="cores">{{ cores }}</option>
         </select>
       </div>
   
       <label for="categoria-id" class=" d-flex">Placa:</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example1" class="wid form-control " placeholder="Placa"  v-model="veiculoModel.placa"/>
+    <input type="text" id="form4Example1" class="wid form-control "  v-model="veiculoModel.placa"/>
       </div>
   
       
       <label for="categoria-id" class=" d-flex">Ano do veiculo:</label>
   <div class="form-outline mb-4">
-    <input type="number" id="form4Example1" class="wid form-control " placeholder="Ano"  v-model="veiculoModel.ano"/>
+    <input type="number" id="form4Example1" class="wid form-control "  v-model="veiculoModel.ano"/>
       </div>
   
   
   <!-- Message input -->
   
   <!-- Submit button -->
-  <button type="submit" href="/veiculo" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Cadastrar</button>
+  <button type="submit" href="/veiculo" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Editar</button>
   
   <a  href="/veiculo" class="espace btn btn-danger btn-block mb-4 ">Voltar</a>
   
@@ -143,6 +143,8 @@
             
             tipo: Object.values(Tipo),
             cor: Object.values(Cor),
+
+            modelo: '' as string,
   
   
             mensagem: {
@@ -158,12 +160,37 @@
     },
     mounted() {
     this.findModelo();
+
+    this.findById(this.id);
+     },
+     
+    computed: {
+    id() {
+      return this.$route.query.id
+    },
   },
-  
-  
-  
-    methods: {
-  
+
+
+
+
+  methods: {
+
+    findById(id: number) {
+      const veiculoClient = new VeiculoClient()
+      veiculoClient
+        .findById(id)
+        .then(sucess => {
+          this.veiculoModel = sucess
+          this.modelo = sucess.modelo.nome
+        })
+        .catch(error => {
+          this.mensagem.ativo = true;
+
+          this.mensagem.titulo = "Algo deu errado!";
+              this.mensagem.texto = error.data;
+              this.mensagem.css = "alert alert-danger alert-dismissible fade show"
+        })
+    },
   
         findModelo(){
   
@@ -185,33 +212,21 @@
   
   
       async submitForm() {
-            const veiculo = new Veiculo();
   
   
-            veiculo.ativo = true;
-            veiculo.modelo = this.veiculoModel.modelo;
-            veiculo.cadastro = new Date()
-            veiculo.placa = this.veiculoModel.placa
-            veiculo.tipoVeiculos = this.veiculoModel.tipoVeiculos
-            veiculo.ano = this.veiculoModel.ano
-            veiculo.cor = this.veiculoModel.cor
-  
-  
-            this.veiculoClient.save(veiculo)
+            this.veiculoClient.update(this.veiculoModel, this.id)
                 .then((response) => {
                     console.log(response);
-                    console.log(veiculo)
   
                     this.mensagem.ativo = true;
-                this.mensagem.titulo = "Cadastrado!";
-                this.mensagem.texto = "O veiculo foi cadastrada com sucesso!";
+                this.mensagem.titulo = "Atualizado!";
+                this.mensagem.texto = "O veiculo foi editado com sucesso!";
                 this.mensagem.css = "alert alert-success alert-dismissible fade show";
   
                 })
                 .catch((error) => {
                     console.log(error);
                     
-                    console.log(veiculo)
                     this.mensagem.ativo = true;
                 this.mensagem.titulo = "Algo deu errado!";
                 this.mensagem.texto = error.data;

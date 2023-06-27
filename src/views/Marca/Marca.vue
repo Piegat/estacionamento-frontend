@@ -32,7 +32,7 @@
 
             <td>
                 <div class="d-flex justify-content-center actions">
-                  <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'CondutorEditar', query: { id: item.id } }">
+                  <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'MarcaEditar', query: { id: item.id } }">
                   <i class="bi bi-pencil-square"></i> Editar </router-link>
 
 

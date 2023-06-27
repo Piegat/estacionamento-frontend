@@ -14,14 +14,14 @@
 
   <label for="categoria-id" class="mtop d-flex">Condutor:</label>
 <div class="form-outline mb-4">
-  <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="movimentacaoModel.condutor">
+  <select id="form4Example1" class="wid form-control " v-model="movimentacaoModel.condutor">
       <option v-for="condutores in condutorlist" :value="condutores">{{ condutores.nome }}</option>
         </select>
 </div>
 
 <label for="categoria-id" class=" d-flex">Veiculo:</label>
 <div class="form-outline mb-4">
-  <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="movimentacaoModel.veiculo">
+  <select id="form4Example1" class="wid form-control " v-model="movimentacaoModel.veiculo">
       <option v-for="veiculos in veiculolist" :value="veiculos">{{ veiculos.modelo.nome + " | " + veiculos.placa }}</option>
         </select>
 </div>
@@ -121,11 +121,11 @@ import { vMaska } from "maska";
 import { defineComponent } from 'vue';
 import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
 import { Condutor } from '@/modal/Codutor';
-import { CondutorClient } from '@/client/CondutorClient';
 import { Movimentacao } from "@/modal/Movimentacao";
 import { MovimentacaoClient } from "@/client/MovimentacaoClient";
-import { VeiculoClient } from "@/client/VeiculoClient";
 import { Veiculo } from "@/modal/Veiculo";
+import { CondutorClient } from "@/client/CondutorClient";
+import { VeiculoClient } from "@/client/VeiculoClient";
 
 export default defineComponent({
   name: 'CondutorCadastrar',
@@ -140,7 +140,11 @@ export default defineComponent({
 
           condutorlist: new Array<Condutor>(),
           veiculolist: new Array<Veiculo>(),
-         
+
+
+            condutor: '' as string,
+            veiculo: '' as string,
+
           
 
           mensagem: {
@@ -157,9 +161,12 @@ export default defineComponent({
 
   mounted(){
 
+    if (this.id !== undefined) {
+      this.findById(Number(this.id))
+    }
+
     this.findCondutor()
     this.findVeiculos()
-
 
   },
 
@@ -173,24 +180,23 @@ export default defineComponent({
 
   methods: {
 
-    getMovimentacao(){
+    findById(id: number) {
+      const movimentacaoClient = new MovimentacaoClient()
+      movimentacaoClient
+        .findById(id)
+        .then(sucess => {
+          this.movimentacaoModel = sucess
+          this.condutor = sucess.condutor.nome
+          this.veiculo = sucess.veiculo.placa
+        })
+        .catch(error => {
+          this.mensagem.ativo = true;
 
-const movimentacaoClient = new MovimentacaoClient
-
-movimentacaoClient.findById(1)
-  .then(sucess => {
-  this.movimentacaoModel = sucess
-  }
-  )
-  .catch(error => {
-  console.log(error);
-});
-
-
-
-},
-
-
+          this.mensagem.titulo = "Algo deu errado!";
+              this.mensagem.texto = error.data;
+              this.mensagem.css = "alert alert-danger alert-dismissible fade show"
+        })
+    },
 
     findCondutor(){
 
@@ -225,17 +231,15 @@ movimentacaoClient.findById(1)
     },
 
 
-    
-
-
 
     async submitForm() {
 
-          this.movimentacaoClient.update(this.movimentacaoModel)
+          this.movimentacaoClient.update(this.movimentacaoModel, this.movimentacaoModel.id)
               .then((response) => {
                   console.log(response);
 
-
+                console.log(this.movimentacaoModel)
+                
                   this.mensagem.ativo = true;
               this.mensagem.titulo = "Atualizada!";
               this.mensagem.texto = "A movimentação foi cadastrada com sucesso!";

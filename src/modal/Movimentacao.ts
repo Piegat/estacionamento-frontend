@@ -12,9 +12,9 @@ export class Movimentacao extends AbstractEntity{
     
     saida!: Date
     
-    horasTempo!: number
+    horastempo!: number
     
-    minutosTempo!: number
+    minutostempo!: number
     
     horasDesconto!: number
     

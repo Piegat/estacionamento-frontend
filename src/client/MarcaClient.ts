@@ -50,9 +50,9 @@ export class MarcaClient{
         }
     }
 
-    public async update(Marca: Marca): Promise<Marca> {
+    public async update(Marca: Marca, id: number): Promise<Marca> {
         try {
-            return (await this.axiosClient.put<Marca>('marca', Marca)).data
+            return (await this.axiosClient.put<Marca>(`marca?id=${id}`, Marca)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }

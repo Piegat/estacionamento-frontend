@@ -58,9 +58,9 @@ export class MovimentacaoClient{
         }
     }
 
-    public async update(Movimentacao: Movimentacao): Promise<Movimentacao> {
+    public async update(Movimentacao: Movimentacao, id: number): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.put<Movimentacao>('movimentacao', Movimentacao)).data
+            return (await this.axiosClient.put<Movimentacao>(`movimentacao?id=${id}`, Movimentacao)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }

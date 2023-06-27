@@ -20,7 +20,8 @@
               <th scope="col">Condutor</th>
               <th scope="col">Entrada</th>
               <th scope="col">Saida</th>
-              <th scope="col">Temp Multa</th>
+              <th scope="col">Tempo Multa</th>
+              <th scope="col">Tempo Total</th>
               <th scope="col">Valor Total</th>
               <th scope="col" style="width:250px">Ação</th>
 
@@ -35,11 +36,12 @@
             <td>{{ item.entrada }}</td>
             <td>{{ item.saida }}</td>
             <td>{{ item.horasMulta + " Horas e " + item.minutosMulta + " Minutos" }}</td>
+            <td>{{ item.horastempo + " Horas e " + item.minutostempo + " Minutos" }}</td>
             <td>{{ item.valorTotal }}</td>
 
             <td>
               <div class="d-flex justify-content-center actions">
-                <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'CondutorEditar', query: { id: item.id } }">
+                <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'MovimentacaoEditar', query: { id: item.id } }">
                   <i class="bi bi-pencil-square"></i> Editar </router-link>
 
 

@@ -12,14 +12,14 @@
 
     <label for="categoria-id" class=" d-flex">Nome da Marca:</label>
   <div class="form-outline mb-4">
-    <input type="text" id="marca-nome" class="wid form-control " placeholder="Nome da Marca" v-model="marcaModel.nome"/>
+    <input type="text" id="marca-nome" class="wid form-control " v-model="marcaModel.nome"/>
   </div>
 
 
   <!-- Message input -->
 
   <!-- Submit button -->
-  <button type="submit" href="/marca" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Cadastrar</button>
+  <button type="submit" href="/marca" class="espace btn btn-primary btn-block mb-4" @submit="submitForm">Editar</button>
 
   <a  href="/marca" class="espace btn btn-danger btn-block mb-4 ">Voltar</a>
 
@@ -111,20 +111,49 @@ import { MarcaClient } from '@/client/MarcaClient';
 
                   };
     },
-    methods: {
-      async submitForm() {
-            const marca = new Marca();
-            marca.ativo = true;
-            marca.nome = this.marcaModel.nome;
-            marca.cadastro = new Date()
 
-            this.marcaClient.save(marca)
+    mounted(){
+
+        this.findById(this.id);
+
+    },
+
+    computed: {
+    id() {
+      return this.$route.query.id
+    },
+  },
+
+    methods: {
+
+
+        findById(id: number) {
+      const marcaClient = new MarcaClient()
+      marcaClient
+        .findById(id)
+        .then(sucess => {
+          this.marcaModel = sucess
+        })
+        .catch(error => {
+          this.mensagem.ativo = true;
+
+          this.mensagem.titulo = "Algo deu errado!";
+              this.mensagem.texto = error.data;
+              this.mensagem.css = "alert alert-danger alert-dismissible fade show"
+        })
+    },
+
+
+      async submitForm() {
+
+            this.marcaClient.update(this.marcaModel, this.id)
                 .then((response) => {
                     console.log(response);
+                    console.log(this.id);
 
-                    this.mensagem.ativo = true;
-                this.mensagem.titulo = "Cadastrado!";
-                this.mensagem.texto = "A marca foi cadastrada com sucesso!";
+                this.mensagem.ativo = true;
+                this.mensagem.titulo = "Atualizado!";
+                this.mensagem.texto = "A marca foi editada com sucesso!";
                 this.mensagem.css = "alert alert-success alert-dismissible fade show";
 
                 })

@@ -14,7 +14,7 @@ export class VeiculoClient{
 
     public async findById(id: number): Promise<Veiculo> {
         try {
-            return (await this.axiosClient.get<Veiculo>(`veiculo?id=1${id}`)).data
+            return (await this.axiosClient.get<Veiculo>(`veiculo?id=${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -50,9 +50,9 @@ export class VeiculoClient{
         }
     }
 
-    public async update(Veiculo: Veiculo): Promise<Veiculo> {
+    public async update(Veiculo: Veiculo, id: number): Promise<Veiculo> {
         try {
-            return (await this.axiosClient.put<Veiculo>('veiculo', Veiculo)).data
+            return (await this.axiosClient.put<Veiculo>(`veiculo?id=${id}`, Veiculo)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }

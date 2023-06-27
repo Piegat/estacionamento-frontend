@@ -14,12 +14,12 @@
 
     <label for="categoria-id" class="mtop d-flex">Nome do Modelo:</label>
   <div class="form-outline mb-4">
-    <input type="text" id="form4Example1" class="wid form-control " placeholder="Nome do Modelo"  v-model="modeloModel.nome"/>
+    <input type="text" id="form4Example1" class="wid form-control " v-model="modeloModel.nome"/>
   </div>/
 
   <label for="categoria-id" class=" d-flex">Marca do Modelo::</label>
   <div class="form-outline mb-4">
-    <select id="form4Example1" class="wid form-control " placeholder="Selecione" v-model="marcaModel">
+    <select id="form4Example1" class="wid form-control "  v-model="marcaModel">
       <option v-for="marca in marcalist" :value="marca">{{ marca.nome }}</option>
         </select>
       </div>
