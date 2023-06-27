@@ -16,7 +16,7 @@ h1{
   import Estacionamento from '@/components/Estacionamento.vue'; // @ is an alias to /src
   
   export default defineComponent({
-    name: 'CondutorEditarView',
+    name: 'CondutorEditar',
     components: {
       Estacionamento,
     },
