@@ -39,7 +39,9 @@
           <td>{{ item.condutor.nome }}</td>
           <td>{{ item.entrada }}</td>
           <td>{{ item.saida }}</td>
-          <td>{{ item.horasMulta + " Horas e " + item.minutosMulta + " Minutos" }} </td>
+          <td>
+          {{ item.horasMulta + " Horas e " + item.minutosMulta + " Minutos" }} 
+          </td>
           <td>{{ item.valorTotal }}</td>
 
           <td>

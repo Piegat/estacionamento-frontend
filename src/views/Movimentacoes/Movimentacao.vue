@@ -39,12 +39,12 @@
 
             <td>
               <div class="d-flex justify-content-center actions">
-                <button class="btn btn-sm btn-primary me-1">
-                  <i class="bi bi-pencil-square"></i> Editar </button>
+                <router-link class="btn btn-sm btn-primary me-1" :to="{name: 'CondutorEditar', query: { id: item.id } }">
+                  <i class="bi bi-pencil-square"></i> Editar </router-link>
 
 
-                <button class="btn btn-sm btn-danger" >
-                  <i class="bi bi-trash"></i> Excluir </button>
+                <button class="btn btn-sm btn-success" >
+                  <i class="bi bi-trash"></i> Detalhar </button>
               </div>
             </td>
           </tr>
@@ -142,6 +142,8 @@ import { MovimentacaoClient } from '@/client/MovimentacaoClient';
     .catch(error => {
       console.log(error);
     });
+
+    console.log(this.movimentacaoList)
 }
 }
 

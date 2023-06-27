@@ -6,14 +6,14 @@ export class MovimentacaoClient{
     
     constructor() {
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8080/api/movimentacao',
+            baseURL: 'http://localhost:8080/api',
             headers: { 'Content-type': 'application/json' }
         })
     }
 
     public async findById(id: number): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.get<Movimentacao>(`?id=1${id}`)).data
+            return (await this.axiosClient.get<Movimentacao>(`movimentacao?id=${id}`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -22,7 +22,7 @@ export class MovimentacaoClient{
 
     public async finByAll(): Promise<Movimentacao[]> {
         try {
-            return (await this.axiosClient.get<Movimentacao[]>(`/lista`)).data
+            return (await this.axiosClient.get<Movimentacao[]>(`movimentacao/lista`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -30,7 +30,7 @@ export class MovimentacaoClient{
 
     public async findByAbertas(): Promise<Movimentacao[]> {
         try {
-            return (await this.axiosClient.get<Movimentacao[]>(`/abertas`)).data
+            return (await this.axiosClient.get<Movimentacao[]>(`movimentacao/abertas`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -40,7 +40,7 @@ export class MovimentacaoClient{
 
     public async findByAtivos(): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.get<Movimentacao>(`/ativo`)).data
+            return (await this.axiosClient.get<Movimentacao>(`movimentacao/ativo`)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -52,7 +52,7 @@ export class MovimentacaoClient{
 
     public async save(Movimentacao: Movimentacao): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.post('', Movimentacao)).data
+            return (await this.axiosClient.post('movimentacao', Movimentacao)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -60,7 +60,7 @@ export class MovimentacaoClient{
 
     public async update(Movimentacao: Movimentacao): Promise<Movimentacao> {
         try {
-            return (await this.axiosClient.put<Movimentacao>('', Movimentacao)).data
+            return (await this.axiosClient.put<Movimentacao>('movimentacao', Movimentacao)).data
         } catch (error: any) {
             return Promise.reject(error.response)
         }
@@ -68,7 +68,7 @@ export class MovimentacaoClient{
 
     public async delete(id: number): Promise<void> {
         try {
-            await this.axiosClient.delete(`?id=${id}`)
+            await this.axiosClient.delete(`movimentacao?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
         }
