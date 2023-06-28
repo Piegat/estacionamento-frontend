@@ -60,6 +60,7 @@ export class MarcaClient{
 
     public async delete(id: number): Promise<void> {
         try {
+            
             await this.axiosClient.delete(`marca?id=${id}`)
         } catch (error: any) {
             return Promise.reject(error.response)
